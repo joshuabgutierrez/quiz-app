@@ -1,5 +1,5 @@
 import React from "react";
-import Container from ".";
+import { Container, Button } from "./index";
 
 function Results({ score }) {
   return (
@@ -7,7 +7,7 @@ function Results({ score }) {
       <Container>
         <h3>Results</h3>
         <p>Your score: {score}</p>
-        <button>Play Again</button>
+        <Button>Play Again</Button>
       </Container>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import Question from "./Question";
 import Options from "./Options";
-import Container from ".";
+import { Container } from "./index";
 import styled from "styled-components";
 
 const StyledQuestionContainer = styled(Container)`
