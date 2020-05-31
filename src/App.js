@@ -3,6 +3,7 @@ import "./styles.css";
 import QuestionContainer from "./Components/QuestionContainer";
 import Home from "./Components/Home";
 import styled from "styled-components";
+import Results from "./Components/Results";
 
 const StyledApp = styled.div`
   font-family: "Roboto";
@@ -11,6 +12,8 @@ const StyledApp = styled.div`
 export default function App() {
   const [startGame, setStartGame] = useState(false);
   const [songs, setSongs] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     fetch(
@@ -24,14 +27,28 @@ export default function App() {
     setStartGame(!startGame);
   };
 
+  const handleIndex = () => {
+    setIndex(prevIndex => prevIndex + 1);
+  };
+
+  const handleScore = points => {
+    setScore(score + points);
+  };
+
   return (
     <StyledApp>
       {startGame ? "" : <Home handleStartGame={handleStartGame} />}
-      {startGame
-        ? songs.map(song => (
-            <QuestionContainer {...song} key={song.correct_answer} />
-          ))
-        : ""}
+      {startGame && index < songs.length ? (
+        <QuestionContainer
+          {...songs[index]}
+          key={songs[index].correct_answer}
+          handleIndex={handleIndex}
+          handleScore={handleScore}
+        />
+      ) : (
+        ""
+      )}
+      {index === 10 ? <Results score={score} /> : ""}
     </StyledApp>
   );
 }

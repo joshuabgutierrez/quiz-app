@@ -24,12 +24,27 @@ const StyledOption = styled.li`
   }
 `;
 
-const Options = ({ correct_answer, incorrect_answers }) => {
+const Options = ({
+  correct_answer,
+  incorrect_answers,
+  handleIndex,
+  handleScore
+}) => {
   const newArr = [correct_answer, ...incorrect_answers].sort();
+
+  const handleAnswer = selectedAnswer => {
+    if (selectedAnswer === correct_answer) {
+      handleScore(10);
+    }
+    handleIndex();
+  };
+
   return (
     <StyledOptionsContainer>
       {newArr.map(answer => (
-        <StyledOption key={answer}>{answer}</StyledOption>
+        <StyledOption key={answer} onClick={() => handleAnswer(answer)}>
+          {answer}
+        </StyledOption>
       ))}
     </StyledOptionsContainer>
   );

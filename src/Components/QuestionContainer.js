@@ -8,14 +8,24 @@ const StyledQuestionContainer = styled(Container)`
   margin: 1em auto;
 `;
 
-const QuestionContainer = ({ question, correct_answer, incorrect_answers }) => (
-  <StyledQuestionContainer>
-    <Question question={question} />
-    <Options
-      correct_answer={correct_answer}
-      incorrect_answers={incorrect_answers}
-    />
-  </StyledQuestionContainer>
-);
+const QuestionContainer = ({
+  question,
+  correct_answer,
+  incorrect_answers,
+  handleIndex,
+  handleScore
+}) => {
+  return (
+    <StyledQuestionContainer>
+      <Question question={question} />
+      <Options
+        correct_answer={correct_answer}
+        incorrect_answers={incorrect_answers}
+        handleIndex={handleIndex}
+        handleScore={handleScore}
+      />
+    </StyledQuestionContainer>
+  );
+};
 
 export default QuestionContainer;
