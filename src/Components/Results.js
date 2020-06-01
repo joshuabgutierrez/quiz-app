@@ -1,13 +1,13 @@
 import React from "react";
 import { Container, Button } from "./index";
 
-function Results({ score }) {
+function Results({ score, restartGame }) {
   return (
     <div>
       <Container>
-        <h3>Results</h3>
+        <h3>RESULTS</h3>
         <p>Your score: {score}</p>
-        <Button>Play Again</Button>
+        <Button onClick={restartGame}>Play Again</Button>
       </Container>
     </div>
   );

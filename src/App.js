@@ -35,6 +35,13 @@ export default function App() {
     setScore(score + points);
   };
 
+  const restartGame = () => {
+    // Reset states
+    // Show first question and so on
+    setIndex(0);
+    setScore(0);
+  };
+
   return (
     <StyledApp>
       {startGame ? "" : <Home handleStartGame={handleStartGame} />}
@@ -48,7 +55,7 @@ export default function App() {
       ) : (
         ""
       )}
-      {index === 10 ? <Results score={score} /> : ""}
+      {index === 10 ? <Results score={score} restartGame={restartGame} /> : ""}
     </StyledApp>
   );
 }
