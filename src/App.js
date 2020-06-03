@@ -14,6 +14,7 @@ export default function App() {
   const [songs, setSongs] = useState([]);
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [restart, setRestart] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -21,7 +22,7 @@ export default function App() {
     )
       .then(response => response.json())
       .then(data => setSongs(data.results));
-  }, []);
+  }, [restart]);
 
   const handleStartGame = () => {
     setStartGame(!startGame);
@@ -40,6 +41,7 @@ export default function App() {
     // Show first question and so on
     setIndex(0);
     setScore(0);
+    setRestart(prevRestart => !prevRestart);
   };
 
   return (
